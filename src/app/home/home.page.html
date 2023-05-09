@@ -1,20 +1,57 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar class="toolbar-login" color="primary">
+    <ion-title class="title-login"> Đăng nhập </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="person" slot="start"></ion-icon>
+            Tên đăng nhập
+          </ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="lock-closed" slot="start"></ion-icon>
+            Mật khẩu
+          </ion-label>
+          <div class="password-login">
+            <ion-input
+              type="{{showPassword ? 'text' : 'password'}}"
+              [(ngModel)]="passwordLogin"
+            ></ion-input>
+            <ion-icon
+              slot="end"
+              size="small"
+              class="icon-password-login"
+              (click)="togglePassword()"
+              name="{{showPassword ? 'eye-off' : 'eye'}}"
+              [color]="showPassword ? 'primary' : 'medium'"
+            ></ion-icon>
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button fill="clear" (click)="forgotPassword()">
+          Quên mật khẩu?
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full">Đăng nhập</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
