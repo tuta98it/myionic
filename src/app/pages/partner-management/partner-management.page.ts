@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PartnerManagementPage implements OnInit {
 
+  titleApp = 'Xét nghiệm'
   constructor() { }
 
   ngOnInit() {
   }
+  
+  onClickTab(){
+    
+  }
+  
 
 }

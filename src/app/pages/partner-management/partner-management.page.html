@@ -1,0 +1,59 @@
+<ion-tabs>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <!-- Tiêu đề Menu -->
+        <ion-title>Menu Content</ion-title>
+
+        <!-- Nội dung menu -->
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">This is the menu content.</ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+  </div>
+  <!-- Header -->
+  <ion-header>
+    <!-- Toolbar -->
+    <ion-toolbar class="toolbar-app" color="primary">
+      <!-- Icon Menu -->
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+      <!-- Tiêu đề -->
+      <ion-title>{{titleApp}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    Tap the button in the toolbar to open the menu.
+  </ion-content>
+
+  <ion-router-outlet></ion-router-outlet>
+
+  <ion-tab-bar slot="bottom">
+    <!-- <ion-tab-button tab="partnership">
+          <ion-icon name="people-outline"></ion-icon>
+          Đối Tác
+        </ion-tab-button>
+        <ion-tab-button tab="request">
+          <ion-icon name="clipboard-outline"></ion-icon>
+          Yêu cầu
+        </ion-tab-button> -->
+
+    <ion-tab-button tab="laboratory" (click)="titleApp = 'Xét nghiệm'">
+      <ion-icon name="clipboard-outline"></ion-icon>
+      Xét nghiệm
+    </ion-tab-button>
+    <ion-tab-button tab="services" (click)="titleApp = 'Thông tin dịch vụ'">
+      <ion-icon name="prism-outline"></ion-icon>
+      Dịch vụ
+    </ion-tab-button>
+    <ion-tab-button tab="notifications" (click)="titleApp = 'Thông báo'">
+      <ion-icon name="notifications-outline"></ion-icon>
+      Thông báo
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
