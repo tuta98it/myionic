@@ -1,7 +1,4 @@
 <ion-content class="ion-padding">
-
-
-
   <!-- Nội dung -->
   <div>
     <!-- Khu vực tìm kiếm -->
@@ -57,13 +54,13 @@
       <ion-list>
 
         <!-- Danh các đối tác -->
-        <ion-item *ngFor="let item of listPartnerLab; let i = index">
+        <ion-item *ngFor="let item of listPatientLab; let i = index">
           <!-- Thông tin bệnh nhân -->
           <ion-label>
             <!-- Tên bệnh nhân -->
-            <h2 class="name-partner">{{item.name}}</h2>
+            <h2 class="name-Patient">{{item.name}}</h2>
             <!-- Số điện thoại -->
-            <div class="info">
+            <div *ngIf="!(item.phone | isEmpty)" class="info">
               <div>
                 <ion-icon name="call-outline"></ion-icon>
               </div>
@@ -71,7 +68,7 @@
             </div>
 
             <!-- Địa chỉ -->
-            <div class="info">
+            <div *ngIf="!(item.address | isEmpty)" class="info">
               <div>
                 <ion-icon name="location-outline"></ion-icon>
               </div>
@@ -79,7 +76,7 @@
             </div>
 
             <!-- Chỉ định -->
-            <div class="info">
+            <div *ngIf="!(item.conditon | isEmpty)" class="info">
               <div>
                 <ion-icon name="pulse-outline"></ion-icon>
               </div>
@@ -87,7 +84,7 @@
             </div>
 
             <!-- Tình trạng mẫu xét nghiệm -->
-            <div class="status" style="display: inline-block; padding: 0.25rem; margin-top:0.25rem; border-radius: 0.25rem; background-color: #b5e0ff;" >
+            <div *ngIf="!(item.status | isEmpty)" class="status">
               <h3>{{item.status}}</h3>
             </div>
           </ion-label>
@@ -97,3 +94,91 @@
   </div>
   <!-- Tap the button in the toolbar to open the menu. -->
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button  (click)="openModalPatientLab()">
+    <ion-icon name="person-add-outline" ></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<!-- Form modal add end edit a Patient  -->
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <!-- Tiêu đề -->
+    <ion-header>
+      <ion-toolbar>
+        <!-- Nút huỷ modal -->
+        <ion-buttons slot="start">
+          <ion-button (click)="setOpenModalAddPatient(false)">Huỷ</ion-button>
+        </ion-buttons>
+
+        <!-- Tiêu đề Modal -->
+        <ion-title>{{titleModalAddPatient}}</ion-title>
+
+        <!-- Nút thêm mới xét nghiệm -->
+        <ion-buttons slot="end">
+          <ion-button (click)="openModalPatientLab()">Lưu</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <!-- Nội dung -->
+    <ion-content class="ion-padding">
+      <!-- Label dẫn dắt người dùng-->
+      <label [innerHTML]="instructionModalPatient"></label>
+      <!-- Khôi nhập dữ liệu -->
+      <div>
+        <!-- Nhập tên bệnh nhân -->
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="person-outline"></ion-icon>
+            Tên bệnh nhân <span style="color:red">*</span>
+          </ion-label>
+          <ion-input [(ngModel)]="itemPatientFormModalLab.name" type="text"
+            placeholder="Nhập tên bệnh nhân ..."></ion-input>
+        </ion-item>
+
+        <!-- Nhập số điện thoại -->
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="call-outline"></ion-icon>
+            Số điện thoại <span style="color:red">*</span>
+          </ion-label>
+          <ion-input [(ngModel)]="itemPatientFormModalLab.phone" type="number" placeholder="Nhập SĐT ..."></ion-input>
+        </ion-item>
+
+        <!-- Nhập địa chỉ bệnh nhân -->
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="location-outline"></ion-icon>
+            Địa chỉ <span style="color:red">*</span>
+          </ion-label>
+          <ion-input [(ngModel)]="itemPatientFormModalLab.address" type="text"
+            placeholder="Nhập địa chỉ ..."></ion-input>
+        </ion-item>
+
+
+        <!-- Nhập địa chỉ Ghi chú-->
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="pencil-outline"></ion-icon>
+            Ghi chú
+          </ion-label>
+          <ion-input [(ngModel)]="itemPatientFormModalLab.notes" type="text"
+            placeholder="Thêm ghi chú ..."></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Khối nút điều hướng -->
+      <div style="margin-top:1rem; display: flex; justify-content: end;">
+        <!-- Tiếp tục thêm thông tin bệnh nhân cần lấy mẫu xét nghiệp -->
+        <ion-buttons slot="primary">
+          <ion-button (click)="nextModalPatient()">
+            Lưu và thêm mới ...
+          </ion-button>
+        </ion-buttons>
+      </div>
+
+
+    </ion-content>
+  </ng-template>
+</ion-modal>

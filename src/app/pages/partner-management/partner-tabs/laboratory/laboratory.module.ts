@@ -6,14 +6,16 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { LaboratoryComponent } from './laboratory.component';
 import { CommonModule } from '@angular/common';
+import { IsEmptyPipe } from 'src/app/pipes/is-empty.pipe';
 
 @NgModule({
-  declarations: [LaboratoryComponent],
+  declarations: [LaboratoryComponent, IsEmptyPipe],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule.forRoot(),
     RouterModule.forChild([{ path: '', component: LaboratoryComponent }]),
+
   ],
   exports: [LaboratoryComponent]
 })
