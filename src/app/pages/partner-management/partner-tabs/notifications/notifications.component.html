@@ -1,3 +1,30 @@
-<p>
-  notifications works!
-</p>
+<ion-content class="ion-padding">
+  <!-- Nội dung -->
+  <div class="content-notification">
+    <!-- Danh sách các dịch vụ -->
+    <ion-list lines="full">
+      <ion-item *ngFor="let notification of listNotifi; let i = index" class="notification-item">
+        <!-- <ion-avatar slot="start">
+          <ion-icon name="alert-circle-outline"></ion-icon>
+        </ion-avatar> -->
+        <div class="notification-box">
+          <ion-label>
+            <h2> <strong>{{ notification.title | uppercase }}</strong> </h2>
+            <!-- <p style="white-space: normal; text-align: justify; color: black;" [innerHTML]="notification.content"></p> -->
+            <ion-note class="notification-note" [innerHTML]="notification.content">{{ notification.content }}</ion-note>
+            <div class="notification-time">
+              <span>{{ notification.time | date:'dd/MM/yyyy hh:mm:ss' }}</span>
+            </div>
+          </ion-label>
+
+          <ion-buttons style="margin-top:0.5rem; display: flex; justify-content: space-evenly;">
+            <ion-button size="small" fill="solid" shape="round" color="danger">Không có</ion-button>
+            <ion-button size="small" fill="solid" shape="round" color="warning">Chưa nhận</ion-button>
+            <ion-button size="small" fill="solid" shape="round">Đã nhận</ion-button>
+          </ion-buttons>
+        </div>
+
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

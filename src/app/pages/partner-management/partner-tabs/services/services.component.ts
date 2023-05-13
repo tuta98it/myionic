@@ -7,165 +7,78 @@ import { IsEmptyPipe } from 'src/app/pipes/is-empty.pipe';
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss'],
 })
-export class ServicesComponent  implements OnInit {
-
-  @ViewChild(IonModal) modal!: IonModal;
-
-  titleModalAddPatient = 'Thêm yêu cầu'
-  instructionModalPatient = 'Mời nhập thông tin bệnh nhân đầu tiên:'
-  numberOfNewPatients = 0;
-  isModalOpen = false;
-
-  itemPatientFormModalLab = {
-    name: '',
-    phone: '',
-    address: '',
-    conditon: '',
-    status: '',
-    notes: '',
-  }
-
-  listPatientLab = [
-    {
-      name: '1234-1643 Trần Văn A',
-      phone: '0981123574',
-      address: 'CT6 Khu đô thị Việt Hưng, Long Biên, Hà Nội',
-      conditon: 'Viêm loét dạ dày tá tràng',
-      status: 'Chưa nhận yêu cầu',
-      notes: '',
-    },
-
-    {
-      name: '1234 - 2341 Trần Thị Lý',
-      phone: '0234538592',
-      address: '257 Giải phóng, Hai Bà Trưng, Hà Nội',
-      conditon: 'Sốt xuất huyết',
-      status: 'Đã nhận yêu cầu và đang xử lý',
-      notes: '',
-    },
-
-    {
-      name: '1234 - 1643 Lý Thuỳ Linh',
-      phone: '0903245394',
-      address: '40 Phường Liệt, Thanh Xuân, Hà Nội',
-      conditon: 'Viêm gan A',
-      status: 'Đã trả kết quả',
-      notes: '',
-    }
-  ];
+export class ServicesComponent implements OnInit {
 
 
-
+  listService: any[] = []
   constructor() {
-    this.listPatientLab = [
-      {
-        name: '1234-1643 Trần Văn A',
-        phone: '0981123574',
-        address: 'CT6 Khu đô thị Việt Hưng, Long Biên, Hà Nội',
-        conditon: 'Viêm loét dạ dày tá tràng',
-        status: 'Chưa nhận yêu cầu',
-        notes: '',
-      },
-
-      {
-        name: '1234 - 2341 Trần Thị Lý',
-        phone: '0234538592',
-        address: '257 Giải phóng, Hai Bà Trưng, Hà Nội',
-        conditon: 'Sốt xuất huyết',
-        status: 'Đã nhận yêu cầu và đang xử lý',
-        notes: '',
-      },
-
-      {
-        name: '1234 - 1643 Lý Thuỳ Linh',
-        phone: '0903245394',
-        address: '40 Phường Liệt, Thanh Xuân, Hà Nội',
-        conditon: 'Viêm gan A',
-        status: 'Đã trả kết quả',
-        notes: '',
-      }
-    ];
 
   }
 
   ngOnInit() {
+    this.listService = [
+      {
+        designation: 'Nhóm máu ABO RH',
+        price: '45000',
+      },
+      {
+        designation: 'Glucose',
+        price: '17000',
+      },
+      {
+        designation: 'GPT (ALT)',
+        price: '95000',
+      },
+      {
+        designation: 'Adenovirus Ag test nhanh',
+        price: '100000',
+      },
+      {
+        designation: 'TSI (Thyroid Stimulating Immunoglobulins)',
+        price: '135000',
+      },
+      {
+        designation: 'GGT',
+        price: '135000',
+      },
+      {
+        designation: 'FibroTest Score',
+        price: '109000',
+      },
+      {
+        designation: 'ValueHbA1c',
+        price: '65000',
+      },
+      {
+        designation: 'Pleural Fluid',
+        price: '69000',
+      },
+      {
+        designation: 'JEV (Viêm não Nhật Bản)',
+        price: '335000',
+      },
+      {
+        designation: 'Tiglycarnitine (C5:1)',
+        price: '185000',
+      },
 
-  }
-  setOpenModalAddPatient(isOpen: boolean) {
-    this.isModalOpen = isOpen;
-  }
-
-  openModalPatientLab() {
-    // Reset lại lời dẫn
-    this.instructionModalPatient = 'Mời nhập thông tin bệnh nhân đầu tiên:'
-    this.numberOfNewPatients = 0;
-
-    this.setOpenModalAddPatient(true);
-  }
-
-  cancelModalAddPatient() {
-    this.setOpenModalAddPatient(false);
-    // this.modal.dismiss(null, 'cancel');
-  }
-
-
-  confirmPatientModal() {
-    var isName = !this.isEmpty(this.itemPatientFormModalLab.name);
-    var isPhone = !this.isEmpty(this.itemPatientFormModalLab.phone);
-    var isAddress = !this.isEmpty(this.itemPatientFormModalLab.address);
-    return (isName && isPhone && isAddress);
-  }
-
-  saveModalAddPatient() {
-    if (this.confirmPatientModal()) {
-      // Thêm mới một item Patient
-      this.listPatientLab.push(JSON.parse(JSON.stringify(this.itemPatientFormModalLab)));
-
-      // Reset form model lab
-      this.resetFormModalPatient();
-
-      // Đóng modal
-      this.setOpenModalAddPatient(false);
-    }
-
-  }
-
-
-  nextModalPatient() {
-    if (this.confirmPatientModal()) {
-      // Thêm mới một item Patient
-      this.listPatientLab.push(JSON.parse(JSON.stringify(this.itemPatientFormModalLab)));
-
-      // Thêm +1 bệnh nhân thành công. Tăng biến đếm số lượng bệnh nhân thêm mới thành công lên 1
-      this.numberOfNewPatients++;
-
-      // Thay đổ lời đầu modal kkhi thêm mới
-      this.instructionModalPatient = `Đã thêm <strong>${this.numberOfNewPatients}</strong> bệnh nhân. Mời nhập thông tin bệnh nhân tiếp theo:`;
-
-      // Reset form model lab
-      this.resetFormModalPatient();
-    };
-
-  }
-
-  onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'confirm') {
-
-    } else if (ev.detail.role === 'next') {
-
-    }
-
-  }
-  resetFormModalPatient() {
-    this.itemPatientFormModalLab = {
-      name: '',
-      phone: '',
-      address: '',
-      conditon: '',
-      status: '',
-      notes: '',
-    }
+      {
+        designation: 'FibroTest Score',
+        price: '109000',
+      },
+      {
+        designation: 'ValueHbA1c',
+        price: '65000',
+      },
+      {
+        designation: 'Pleural Fluid',
+        price: '69000',
+      },
+      {
+        designation: 'Nắm tay',
+        price: '0',
+      },
+    ]
   }
 
   isEmpty(value: any) {
@@ -173,3 +86,4 @@ export class ServicesComponent  implements OnInit {
   }
 
 }
+

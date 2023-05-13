@@ -92,14 +92,16 @@
       </ion-list>
     </div>
   </div>
-  <!-- Tap the button in the toolbar to open the menu. -->
+
+  <!-- Nút thêm mới -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openModalPatientLab()">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
 
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button  (click)="openModalPatientLab()">
-    <ion-icon name="person-add-outline" ></ion-icon>
-  </ion-fab-button>
-</ion-fab>
+
 <!-- Form modal add end edit a Patient  -->
 <ion-modal [isOpen]="isModalOpen">
   <ng-template>
@@ -163,8 +165,7 @@
             <ion-icon name="pencil-outline"></ion-icon>
             Ghi chú
           </ion-label>
-          <ion-input [(ngModel)]="itemPatientFormModalLab.notes" type="text"
-            placeholder="Thêm ghi chú ..."></ion-input>
+          <ion-input [(ngModel)]="itemPatientFormModalLab.notes" type="text" placeholder="Thêm ghi chú ..."></ion-input>
         </ion-item>
       </div>
 

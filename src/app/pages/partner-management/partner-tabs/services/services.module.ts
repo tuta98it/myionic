@@ -6,11 +6,12 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { ServicesComponent } from './services.component';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { IsEmptyPipe } from 'src/app/pipes/is-empty.pipe';
 import { SharedModule } from '../share.module';
+
 @NgModule({
-  declarations: [ServicesComponent,],
+  declarations: [ServicesComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -18,6 +19,7 @@ import { SharedModule } from '../share.module';
     RouterModule.forChild([{ path: '', component: ServicesComponent }]),
     SharedModule,
   ],
+  providers : [CurrencyPipe],
   exports: [ServicesComponent]
 })
 export class ServicesModule { }
