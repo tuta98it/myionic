@@ -15,7 +15,7 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonModule,
     FormsModule,
     PartnerManagementPageRoutingModule,
-    
+
     IonicModule.forRoot({ mode: 'ios' }),
   ]
 })

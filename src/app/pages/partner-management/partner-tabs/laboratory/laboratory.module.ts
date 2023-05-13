@@ -7,14 +7,16 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { LaboratoryComponent } from './laboratory.component';
 import { CommonModule } from '@angular/common';
 import { IsEmptyPipe } from 'src/app/pipes/is-empty.pipe';
+import { SharedModule } from '../share.module';
 
 @NgModule({
-  declarations: [LaboratoryComponent, IsEmptyPipe],
+  declarations: [LaboratoryComponent, ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule.forRoot(),
     RouterModule.forChild([{ path: '', component: LaboratoryComponent }]),
+    SharedModule,
 
   ],
   exports: [LaboratoryComponent]
