@@ -7,7 +7,10 @@
         <div class="title-menu-partner">
           <ion-chip>
             <ion-avatar>
-              <img alt="Avatar teee" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+              <img
+                alt="Avatar teee"
+                src="https://ionicframework.com/docs/img/demos/avatar.svg"
+              />
             </ion-avatar>
             <ion-label>Chip Avatar</ion-label>
           </ion-chip>
@@ -43,18 +46,21 @@
         </ion-item> -->
       </ion-list>
 
-
-
       <!-- Nút "Đăng xuất" -->
       <div class="logout-button-wrapper">
-        <ion-button size="medium" color="light" (click)="logoutAccount()">Đăng xuất<ion-icon slot="end" name="log-out-outline"></ion-icon></ion-button>
+        <ion-button size="medium" color="light" id="comfirm-alert">Đăng xuất<ion-icon slot="end" name="log-out-outline"></ion-icon></ion-button>
+        <ion-alert
+          trigger="comfirm-alert"
+          header="Đăng xuất khỏi tài khoản của bạn?"
+          [buttons]="alertConfirmButtons"
+          (didDismiss)="setResult($event)"
+        ></ion-alert>
       </div>
     </ion-content>
   </ion-menu>
   <!-- Header -->
   <ion-header>
-    <div class="ion-page" id="main-content">
-    </div>
+    <div class="ion-page" id="main-content"></div>
     <!-- Toolbar -->
     <ion-toolbar class="toolbar-app" color="primary">
       <!-- Icon Menu -->
@@ -67,10 +73,6 @@
     </ion-toolbar>
   </ion-header>
 
-
-
-
-
   <!-- <ion-router-outlet></ion-router-outlet> -->
 
   <ion-tab-bar slot="bottom">
@@ -82,7 +84,6 @@
           <ion-icon name="clipboard-outline"></ion-icon>
           Yêu cầu
         </ion-tab-button> -->
-
 
     <ion-tab-button tab="laboratory" (click)="titleApp = 'Xét nghiệm'">
       <ion-icon name="clipboard-outline"></ion-icon>
@@ -98,3 +99,5 @@
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
+
+<!-- <ion-alert-controller></ion-alert-controller> -->

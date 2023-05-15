@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+import { PartnerManagementPageModule } from './partner-management.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
+import { IonicModule } from '@ionic/angular';
 @Component({
   selector: 'app-partner-management',
   templateUrl: './partner-management.page.html',
@@ -13,10 +17,13 @@ export class PartnerManagementPage implements OnInit {
   titleApp = 'Xét nghiệm'
   constructor(
     private router: Router,
-    private modalController: ModalController) {
+    private modalController: ModalController,
+    private alertController: AlertController) {
 
 
-    }
+  }
+
+
 
   listAccounts = [
     {
@@ -73,14 +80,40 @@ export class PartnerManagementPage implements OnInit {
 
 
   logoutAccount() {
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
+  }
+
+
+  public alertConfirmButtons = [
+    {
+      text: 'Huỷ',
+      role: 'cancel',
+      handler: () => {
+        // this.handlerMessage = 'Alert canceled';
+      },
+    },
+    {
+      text: 'OK',
+      role: 'confirm',
+      handler: () => {
+        // this.handlerMessage = 'Alert confirmed';
+      },
+    },
+  ];
+
+  setResult(ev:any) {
+    let role = ev.detail.role;
+    if(role = 'OK'){
+      this.logoutAccount();
+    }
+    // this.roleMessage = `Dismissed with role: ${ev.detail.role}`;
   }
 
 
   async openDialog() {
     const modal = await this.modalController.create({
       component: ConfirmDialogComponent,
-      componentProps : {
+      componentProps: {
         title: "Xác nhận",
         message: "Đăng xuất khỏi tài khoản của bạn?"
       }
@@ -98,5 +131,27 @@ export class PartnerManagementPage implements OnInit {
 
     return await modal.present();
   }
+
+  // async showConfirmation() {
+  //   const alert = await this.alertController.create({
+  //     header: 'Xác nhận đăng xuất',
+  //     message: 'Bạn có chắc chắn muốn đăng xuất?',
+  //     buttons: [
+  //       {
+  //         text: 'Hủy',
+  //         role: 'cancel',
+  //       },
+  //       {
+  //         text: 'Đăng xuất',
+  //         handler: () => {
+  //           // Xử lý đăng xuất tại đây
+  //         }
+  //       }
+  //     ]
+  //   });
+
+  //   await alert.present();
+  // }
+
 
 }
