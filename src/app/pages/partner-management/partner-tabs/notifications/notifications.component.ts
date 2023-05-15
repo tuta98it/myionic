@@ -13,7 +13,7 @@ export class NotificationsComponent  implements OnInit {
     this.listNotifi = [
       {
         title: 'Tình trạng đơn hàng',
-        content: "Bệnh nhân Nguyễn Văn Â đã có kết quả xét nghiệm gồm <u><i>5 chỉ thị</i></u> đã có kết quả xét nghiệm là 2.345.00đ. Bạn đã nhận được phí tư vấn chưa?",
+        content: "Bệnh nhân Nguyễn Văn Â đã có kết quả xét nghiệm gồm <u><i>5 chỉ thị</i></u> đã có kết quả xét nghiệm là 2.345.000đ. Bạn đã nhận được phí tư vấn chưa?",
         time: new Date(),
       },
       {

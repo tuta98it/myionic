@@ -10,12 +10,14 @@
         margin: 0.5rem 0 0.5rem 0;
 
         ion-label {
-          ion-note.notification-note {
-            white-space: normal
+          p.notification-note {
+            white-space: normal;
+            text-align: justify;
           }
 
-          div.notification-time {
-            text-align: right;
+          div.notification-header {
+            display: flex;
+            justify-content: space-between;
 
             span {
               font-size: small;

@@ -9,12 +9,12 @@
         </ion-avatar> -->
         <div class="notification-box">
           <ion-label>
-            <h2> <strong>{{ notification.title | uppercase }}</strong> </h2>
-            <!-- <p style="white-space: normal; text-align: justify; color: black;" [innerHTML]="notification.content"></p> -->
-            <ion-note class="notification-note" [innerHTML]="notification.content">{{ notification.content }}</ion-note>
-            <div class="notification-time">
-              <span>{{ notification.time | date:'dd/MM/yyyy hh:mm:ss' }}</span>
+            <div class="notification-header">
+              <h2> <strong>{{ notification.title | uppercase }}</strong> </h2>
+              <span>{{ notification.time | date:'dd/MM/yyyy' }}</span>
             </div>
+            <!-- <p style="white-space: normal; text-align: justify; color: black;" [innerHTML]="notification.content"></p> -->
+            <p class="notification-note" [innerHTML]="notification.content">{{ notification.content }}</p>
           </ion-label>
 
           <ion-buttons style="margin-top:0.5rem; display: flex; justify-content: space-evenly;">
