@@ -96,17 +96,19 @@ export class PartnerManagementPage implements OnInit {
       text: 'OK',
       role: 'confirm',
       handler: () => {
+        this.logoutAccount();
         // this.handlerMessage = 'Alert confirmed';
       },
     },
   ];
 
-  setResult(ev:any) {
+  setResult(ev: any) {
     let role = ev.detail.role;
-    if(role = 'OK'){
-      this.logoutAccount();
+    if (role = 'confirm') {
+      // console.log(`Dismissed with role: ${ev.detail.role}`);
+    }else if('cancel'){
+
     }
-    // this.roleMessage = `Dismissed with role: ${ev.detail.role}`;
   }
 
 
