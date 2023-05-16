@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IsEmptyPipe } from '../pipes/is-empty.pipe';
+import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';
+import { ModalController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: 'login.page.html',
@@ -50,7 +53,9 @@ export class LoginPage {
     },
   ]
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private modalController: ModalController) {
   }
 
   isEmpty(value: any) {
@@ -76,10 +81,34 @@ export class LoginPage {
   }
 
   forgotPassword() {
+    this.openDialog();
     // Xử lý khi người dùng nhấn vào nút quên mật khẩu
     // Chuyển hướng đến trang quên mật khẩu hoặc hiển thị form quên mật khẩu...
+
   }
 
+
+  async openDialog() {
+    const modal = await this.modalController.create({
+      component: ConfirmDialogComponent,
+      componentProps: {
+        title: "Bạn quên mật khẩu?",
+        message: "Ui zoi ơi bạn ơi, tôi chịu!, bạn thứ cố nhớ lại coi :). Hiện tại hệ thông đang buồn nhủ  ^zzz^zzz"
+      }
+    });
+
+    modal.onDidDismiss().then(result => {
+      if (result.data) {
+        // User clicked OK
+        console.log('User clicked OK');
+      } else {
+        // User clicked Cancel
+        console.log('User clicked Cancel');
+      }
+    });
+
+    return await modal.present();
+  }
 
   loginAccount() {
     let acc = this.accountLogin;
