@@ -29,7 +29,7 @@
           </ion-label>
           <div class="password-login">
             <ion-input type="{{showPassword ? 'text' : 'password'}}" [(ngModel)]="accountLogin.password"
-              placeholder="Password" (keyup)="onKeyUpInputPassword()"></ion-input>
+              placeholder="Password" (keyup)="onKeyUpInputPassword()" (keyup.enter)="loginAccount()"></ion-input>
             <ion-icon slot="end" size="small" class="icon-password-login" (click)="togglePassword()"
               name="{{showPassword ? 'eye-off' : 'eye'}}" [color]="showPassword ? 'primary' : 'medium'"></ion-icon>
           </div>
