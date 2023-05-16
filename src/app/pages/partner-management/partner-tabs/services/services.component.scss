@@ -1,4 +1,7 @@
 .content-service {
+  overflow: auto;
+  max-height: 27rem;
+
   ion-list {
     ion-item {
       display: flex;

@@ -6,18 +6,32 @@
       <!-- Tìm liếm - lọc -->
       <div style="display: flex;">
         <ion-searchbar placeholder="Search"></ion-searchbar>
-        <ion-buttons slot="start">
+        <!-- <ion-buttons slot="start">
           <ion-button>
             <ion-icon slot="icon-only" name="funnel-outline"></ion-icon>
           </ion-button>
-        </ion-buttons>
+        </ion-buttons> -->
+        <!-- <ion-item>
+        </ion-item> -->
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <ion-list>
+            <ion-item>
+              <ion-select interface="popover" placeholder="Lọc" >
+                <ion-select-option  value="dealthcare">Nhóm BP</ion-select-option>
+                <ion-select-option  value="products">Nhóm SP</ion-select-option>
+              </ion-select>
+              <ion-icon slot="start" name="funnel-outline" color="primary"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
       </div>
 
-      <!-- Lựa chọn -->
-      <div style="display: flex; align-items: center; margin-left: 1rem;">
-        <ion-icon slot="icon-only" name="calendar-clear-outline"></ion-icon>
+      <!-- Lựa chọn khoảng thời gian lọc -->
+      <div style="display: flex; align-items: center; ">
         <ion-list>
           <ion-item>
+            <ion-icon slot="start" name="calendar-clear-outline" color="primary"></ion-icon>
             <ion-select aria-label="Fruit" interface="popover" placeholder="Chọn khoảng thời gian lọc">
               <ion-select-option value="all">
                 --Tất Cả--
@@ -50,7 +64,7 @@
     </div>
 
     <!-- Nội dung -->
-    <div class="content-laboratory">
+    <div class="content-laboratory" style="overflow: auto; max-height: 25rem;">
       <ion-list>
 
         <!-- Danh các đối tác -->

@@ -13,6 +13,7 @@ export class LaboratoryComponent implements OnInit {
 
   @ViewChild(IonModal) modal!: IonModal;
 
+
   titleModalAddPatient = 'Thêm yêu cầu'
   instructionModalPatient = 'Mời nhập thông tin bệnh nhân đầu tiên:'
   numberOfNewPatients = 0;
