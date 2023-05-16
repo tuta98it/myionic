@@ -64,3 +64,13 @@ ion-icon.icon-password-login {
   --ion-color-primary: red; /* Màu sắc khi mật khẩu được hiển thị */
   --ion-color-secondary: blue; /* Màu sắc khi mật khẩu được ẩn */
 }
+
+
+.m-error {
+  position: absolute;
+  margin-left: 0.8rem;
+  bottom: -0.9rem;
+  min-height: 18px;
+  font-size: small;
+  color: var(--ion-color-danger);
+}

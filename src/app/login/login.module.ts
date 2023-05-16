@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginPage } from './login.page';
 
 import { LoginPageRoutingModule } from './login-routing.module';
+import { SharedModule } from '../pages/partner-management/partner-tabs/share.module';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
+    SharedModule,
     LoginPageRoutingModule
   ],
   declarations: [LoginPage]

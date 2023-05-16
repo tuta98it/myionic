@@ -57,11 +57,21 @@ export class LoginPage {
     return new IsEmptyPipe().transform(value);
   }
 
-  isShowErrMessUsername(){
-    this.isShowIsEmptyUsername =  this.isEmpty(this.accountLogin.username);
+  onKeyUpInputUsername() {
+    this.accountLogin.error = '';
+    this.isShowErrMessUsername();
   }
 
-  isShowErrMessPassword(){
+  onKeyUpInputPassword() {
+    this.accountLogin.error = '';
+    this.isShowErrMessPassword();
+  }
+
+  isShowErrMessUsername() {
+    this.isShowIsEmptyUsername = this.isEmpty(this.accountLogin.username);
+  }
+
+  isShowErrMessPassword() {
     this.isShowIsEmptyPassword = this.isEmpty(this.accountLogin.password);
   }
 
