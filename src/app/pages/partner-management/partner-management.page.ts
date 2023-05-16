@@ -25,50 +25,6 @@ export class PartnerManagementPage implements OnInit {
 
 
 
-  listAccounts = [
-    {
-      username: '',
-      password: '',
-      name: '',
-      code: '',
-      phone: '',
-      address: '',
-      socialNetwork: {
-        facebook: '',
-        zalo: '',
-        telegram: '',
-        twitter: '',
-      }
-    },
-    {
-      username: '',
-      password: '',
-      name: '',
-      code: '',
-      phone: '',
-      address: '',
-      socialNetwork: {
-        facebook: '',
-        zalo: '',
-        telegram: '',
-        twitter: '',
-      }
-    },
-    {
-      username: '',
-      password: '',
-      name: '',
-      code: '',
-      phone: '',
-      address: '',
-      socialNetwork: {
-        facebook: '',
-        zalo: '',
-        telegram: '',
-        twitter: '',
-      }
-    },
-  ]
 
 
   ngOnInit() {
