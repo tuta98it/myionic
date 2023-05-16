@@ -11,9 +11,12 @@
         <ion-item>
           <ion-label position="floating">
             <ion-icon name="person" slot="start"></ion-icon>
-            Tên đăng nhập
+            Tên đăng nhập <span style="color:red">*</span>
           </ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" placeholder="Username" [(ngModel)]="accountLogin.username"
+            (keyup)="isShowErrMessUsername()"></ion-input>
+          <span style="color:red; font-size: small;" *ngIf="isShowIsEmptyUsername">*Tên đăng nhập không được để
+            trống</span>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -22,22 +25,15 @@
         <ion-item>
           <ion-label position="floating">
             <ion-icon name="lock-closed" slot="start"></ion-icon>
-            Mật khẩu
+            Mật khẩu <span style="color:red">*</span>
           </ion-label>
           <div class="password-login">
-            <ion-input
-              type="{{showPassword ? 'text' : 'password'}}"
-              [(ngModel)]="passwordLogin"
-            ></ion-input>
-            <ion-icon
-              slot="end"
-              size="small"
-              class="icon-password-login"
-              (click)="togglePassword()"
-              name="{{showPassword ? 'eye-off' : 'eye'}}"
-              [color]="showPassword ? 'primary' : 'medium'"
-            ></ion-icon>
+            <ion-input type="{{showPassword ? 'text' : 'password'}}" [(ngModel)]="accountLogin.password"
+              placeholder="Password" (keyup)="isShowErrMessPassword()"></ion-input>
+            <ion-icon slot="end" size="small" class="icon-password-login" (click)="togglePassword()"
+              name="{{showPassword ? 'eye-off' : 'eye'}}" [color]="showPassword ? 'primary' : 'medium'"></ion-icon>
           </div>
+          <span style="color:red; font-size: small;" *ngIf="isShowIsEmptyPassword">*Mật khẩu không được để trống</span>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -50,7 +46,8 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button expand="full" (click)="loginAccount()">Đăng nhập <ion-icon slot="end" name="log-in-outline"></ion-icon></ion-button>
+        <ion-button expand="full" (click)="loginAccount()">Đăng nhập <ion-icon slot="end"
+            name="log-in-outline"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
