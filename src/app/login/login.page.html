@@ -17,7 +17,7 @@
           <ion-input type="text" placeholder="Username" [(ngModel)]="accountLogin.username"
             (keyup)="onKeyUpInputUsername()"></ion-input>
         </ion-item>
-        <span class="m-error" *ngIf="isShowIsEmptyUsername">*Tên đăng nhập không được để trống</span>
+        <span class="m-error" *ngIf="isEmptyUsername">*Tên đăng nhập không được để trống</span>
       </ion-col>
     </ion-row>
     <ion-row style="margin-top: 0.5rem;">
@@ -34,7 +34,7 @@
               name="{{showPassword ? 'eye-off' : 'eye'}}" [color]="showPassword ? 'primary' : 'medium'"></ion-icon>
           </div>
         </ion-item>
-        <span class="m-error" *ngIf="isShowIsEmptyPassword">*Mật khẩu không được để trống</span>
+        <span class="m-error" *ngIf="isEmptyPassword">*Mật khẩu không được để trống</span>
       </ion-col>
     </ion-row>
     <ion-row>

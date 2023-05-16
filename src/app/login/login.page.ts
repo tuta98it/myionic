@@ -15,8 +15,8 @@ export class LoginPage {
     password: '',
     error: ''
   }
-  isShowIsEmptyUsername = false;
-  isShowIsEmptyPassword = false;
+  isEmptyUsername = false;
+  isEmptyPassword = false;
   showPassword = false;
 
   listAccounts = [
@@ -59,20 +59,16 @@ export class LoginPage {
 
   onKeyUpInputUsername() {
     this.accountLogin.error = '';
-    this.isShowErrMessUsername();
+
+    // Set is show message error Username
+    this.isEmptyUsername = this.isEmpty(this.accountLogin.username);
   }
 
   onKeyUpInputPassword() {
     this.accountLogin.error = '';
-    this.isShowErrMessPassword();
-  }
 
-  isShowErrMessUsername() {
-    this.isShowIsEmptyUsername = this.isEmpty(this.accountLogin.username);
-  }
-
-  isShowErrMessPassword() {
-    this.isShowIsEmptyPassword = this.isEmpty(this.accountLogin.password);
+    // Set is show messsage error Password
+    this.isEmptyPassword = this.isEmpty(this.accountLogin.password);
   }
 
   togglePassword() {
@@ -86,28 +82,38 @@ export class LoginPage {
 
 
   loginAccount() {
-
     let acc = this.accountLogin;
     let listAcc = this.listAccounts;
 
-    let listAccIncludesUsername = listAcc.filter((objAcc) => {
-      return objAcc.username == acc.username;
-    });
-
-    if (this.isEmpty(listAccIncludesUsername)) {
-      this.accountLogin.error = 'Tên đăng nhập hoặc mật khẩu không hợp lệ'
-    } else {
-      let accIncludesPassword = listAccIncludesUsername.find((objAcc) =>
-        objAcc.password === acc.password
-      );
-
-      if (this.isEmpty(accIncludesPassword)) {
-        this.accountLogin.error = 'Tên đăng nhập hoặc mật khẩu không hợp lệ';
-      } else {
-        this.router.navigate(['/partner-management'])
-      }
+    if (this.isEmpty(acc.username)) {
+      // Show message error Username
+      this.isEmptyUsername = true;
     }
 
+    if (this.isEmpty(acc.password)) {
+      // Show message error Password
+      this.isEmptyPassword = true;
+    }
+
+    if (!(this.isEmptyUsername || this.isEmptyPassword)) {
+      let listAccIncludesUsername = listAcc.filter((objAcc) => {
+        return objAcc.username == acc.username;
+      });
+
+      if (this.isEmpty(listAccIncludesUsername)) {
+        this.accountLogin.error = 'Tên đăng nhập hoặc mật khẩu không hợp lệ'
+      } else {
+        let accIncludesPassword = listAccIncludesUsername.find((objAcc) =>
+          objAcc.password === acc.password
+        );
+
+        if (this.isEmpty(accIncludesPassword)) {
+          this.accountLogin.error = 'Tên đăng nhập hoặc mật khẩu không hợp lệ';
+        } else {
+          this.router.navigate(['/partner-management'])
+        }
+      }
+    }
   }
 
 
