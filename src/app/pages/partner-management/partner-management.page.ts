@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, IonModal, ModalController } from '@ionic/angular';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+import { OverlayEventDetail } from '@ionic/core/components';
 import { PartnerManagementPageModule } from './partner-management.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +13,9 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./partner-management.page.scss'],
 })
 export class PartnerManagementPage implements OnInit {
+  @ViewChild(IonModal) modal!: IonModal;
+  AVATAR_DEFAULT: string = 'https://ionicframework.com/docs/img/demos/avatar.svg';
+
   accCurrent: any = {};
   titleApp = 'Xét nghiệm'
   constructor(
@@ -117,5 +121,19 @@ export class PartnerManagementPage implements OnInit {
   //   await alert.present();
   // }
 
+  closeModalInforAcc() {
+    this.modal.dismiss(null, 'close');
+  }
+
+  confirm() {
+    this.modal.dismiss('', 'confirm');
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'close') {
+      // this.message = `Hello, ${ev.detail.data}!`;
+    }
+  }
 
 }
