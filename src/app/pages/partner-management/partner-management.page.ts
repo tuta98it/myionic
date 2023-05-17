@@ -33,7 +33,7 @@ export class PartnerManagementPage implements OnInit {
 
 
 
-  ngOnInit() {
+  async ngOnInit() {
 
     // this.activatedRoute.queryParams.subscribe(params => {
     //   // Dữ liệu account sẽ được trả về khi đăng nhập thành công.
@@ -41,10 +41,14 @@ export class PartnerManagementPage implements OnInit {
     //   console.log('this.accCurrent: ', this.accCurrent);
     // });
 
+
+    await this.getAccCurrent();
+  }
+
+  getAccCurrent() {
     // Dữ liệu account sẽ được  trả về khi đăng nhập thành công.
     this.accCurrent = this.dataService.getData();
     console.log('this.accCurrent: ', this.accCurrent);
-
   }
 
   onClickTab() {
