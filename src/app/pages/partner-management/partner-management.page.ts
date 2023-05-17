@@ -7,6 +7,7 @@ import { PartnerManagementPageModule } from './partner-management.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { DataService } from 'src/app/services/data-service.service';
 @Component({
   selector: 'app-partner-management',
   templateUrl: './partner-management.page.html',
@@ -22,7 +23,8 @@ export class PartnerManagementPage implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private modalController: ModalController,
-    private alertController: AlertController) {
+    private alertController: AlertController,
+    private dataService: DataService) {
 
 
   }
@@ -33,11 +35,16 @@ export class PartnerManagementPage implements OnInit {
 
   ngOnInit() {
 
-    this.activatedRoute.queryParams.subscribe(params => {
-      // Dữ liệu account sẽ được trả về khi đăng nhập thành công.
-      this.accCurrent = params as any; // Các thuộc tính của đối tượng được truyền sẽ có trong đối tượng params
-      console.log('this.accCurrent: ', this.accCurrent);
-    });
+    // this.activatedRoute.queryParams.subscribe(params => {
+    //   // Dữ liệu account sẽ được trả về khi đăng nhập thành công.
+    //   this.accCurrent = params as any; // Các thuộc tính của đối tượng được truyền sẽ có trong đối tượng params
+    //   console.log('this.accCurrent: ', this.accCurrent);
+    // });
+
+    // Dữ liệu account sẽ được  trả về khi đăng nhập thành công.
+    this.accCurrent = this.dataService.getData();
+    console.log('this.accCurrent: ', this.accCurrent);
+
   }
 
   onClickTab() {
