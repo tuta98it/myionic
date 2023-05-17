@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IsEmptyPipe } from '../pipes/is-empty.pipe';
 import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';
-import { ModalController } from '@ionic/angular';
-
+import { ModalController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: 'login.page.html',
@@ -24,12 +23,13 @@ export class LoginPage {
 
   listAccounts = [
     {
+      id: 1,
       username: 'linhtl',
       password: '9167',
-      name: '',
+      name: 'Lý Thuỳ Linh',
       code: '',
-      phone: '',
-      address: '',
+      phone: '0971195594',
+      address: 'Số 2 ngách 62 ngõ 20 đường Mỹ Đình, Nam Từ Liêm, Hà Nội',
       socialNetwork: {
         facebook: '',
         zalo: '',
@@ -38,12 +38,14 @@ export class LoginPage {
       }
     },
     {
+      id: 2,
       username: 'tuta',
       password: '9178',
-      name: '',
+      avatar: '',
+      name: 'Trần Anh Tú',
       code: '',
-      phone: '',
-      address: '',
+      phone: '0388493355',
+      address: '30/8/14, Phan Đình Giót, La Khê, Hà Đông, Hà Nội',
       socialNetwork: {
         facebook: '',
         zalo: '',
@@ -55,7 +57,8 @@ export class LoginPage {
 
   constructor(
     private router: Router,
-    private modalController: ModalController) {
+    private modalController: ModalController,
+    private navCtrl: NavController) {
   }
 
   isEmpty(value: any) {
@@ -111,6 +114,7 @@ export class LoginPage {
   }
 
   loginAccount() {
+
     let acc = this.accountLogin;
     let listAcc = this.listAccounts;
 
@@ -139,13 +143,11 @@ export class LoginPage {
         if (this.isEmpty(accIncludesPassword)) {
           this.accountLogin.error = 'Tên đăng nhập hoặc mật khẩu không hợp lệ';
         } else {
-          this.router.navigate(['/partner-management'])
+          let accIncludes = accIncludesPassword;
+          // Dữ liệu account sẽ được truyền đi khi đăng nhập đúng tài khoản và mật khẩu.
+          this.navCtrl.navigateForward('/partner-management', { queryParams: accIncludes });
         }
       }
     }
   }
-
-
-
-
 }

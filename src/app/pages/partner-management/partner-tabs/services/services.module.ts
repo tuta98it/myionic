@@ -8,7 +8,7 @@ import { ServicesComponent } from './services.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { IsEmptyPipe } from 'src/app/pipes/is-empty.pipe';
-import { SharedModule } from '../share.module';
+import { SharedModule } from '../../../../shared/modules/share.module';
 
 @NgModule({
   declarations: [ServicesComponent],

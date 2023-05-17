@@ -7,7 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { LaboratoryComponent } from './laboratory.component';
 import { CommonModule } from '@angular/common';
 import { IsEmptyPipe } from 'src/app/pipes/is-empty.pipe';
-import { SharedModule } from '../share.module';
+import { SharedModule } from '../../../../shared/modules/share.module';
 
 @NgModule({
   declarations: [LaboratoryComponent, ],

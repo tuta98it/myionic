@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { PartnerManagementPageModule } from './partner-management.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
 @Component({
   selector: 'app-partner-management',
@@ -13,10 +12,11 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./partner-management.page.scss'],
 })
 export class PartnerManagementPage implements OnInit {
-
+  accCurrent: any = {};
   titleApp = 'Xét nghiệm'
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private modalController: ModalController,
     private alertController: AlertController) {
 
@@ -28,6 +28,12 @@ export class PartnerManagementPage implements OnInit {
 
 
   ngOnInit() {
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      // Dữ liệu account sẽ được trả về khi đăng nhập thành công.
+      this.accCurrent = params as any; // Các thuộc tính của đối tượng được truyền sẽ có trong đối tượng params
+      console.log('this.accCurrent: ', this.accCurrent);
+    });
   }
 
   onClickTab() {
@@ -62,7 +68,7 @@ export class PartnerManagementPage implements OnInit {
     let role = ev.detail.role;
     if (role = 'confirm') {
       // console.log(`Dismissed with role: ${ev.detail.role}`);
-    }else if('cancel'){
+    } else if ('cancel') {
 
     }
   }

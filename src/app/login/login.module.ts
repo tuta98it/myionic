@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { LoginPage } from './login.page';
-
 import { LoginPageRoutingModule } from './login-routing.module';
-import { SharedModule } from '../pages/partner-management/partner-tabs/share.module';
+import { SharedModule } from '../shared/modules/share.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { SharedModule } from '../pages/partner-management/partner-tabs/share.mod
     FormsModule,
     IonicModule,
     SharedModule,
-    LoginPageRoutingModule
+    LoginPageRoutingModule,
+    RouterModule
   ],
   declarations: [LoginPage]
 })
