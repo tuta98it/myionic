@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, IonModal, ModalController } from '@ionic/angular';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
@@ -14,7 +14,7 @@ import { IsEmptyPipe } from 'src/app/pipes/is-empty.pipe';
   templateUrl: './partner-management.page.html',
   styleUrls: ['./partner-management.page.scss'],
 })
-export class PartnerManagementPage implements OnInit {
+export class PartnerManagementPage implements OnInit, AfterViewInit {
   @ViewChild(IonModal) modal!: IonModal;
   AVATAR_DEFAULT: string = 'https://ionicframework.com/docs/img/demos/avatar.svg';
 
@@ -27,42 +27,63 @@ export class PartnerManagementPage implements OnInit {
     private alertController: AlertController,
     private dataService: DataService) {
 
+  }
 
+
+  async ngAfterViewInit() {
+    // console.log('ngAfterViewInit');
+    // await this.getAccCurrent();
   }
 
 
 
 
 
-  async ngOnInit() {
+  // async ngOnInit() {
+  // console.log('ngOnInit');
+  // this.activatedRoute.queryParams.subscribe(params => {
+  //   // Dữ liệu account sẽ được trả về khi đăng nhập thành công.
+  //   this.accCurrent = params as any; // Các thuộc tính của đối tượng được truyền sẽ có trong đối tượng params
+  //   console.log('this.accCurrent: ', this.accCurrent);
+  // });
 
+
+  // console.log('ngOnInit')
+  // this.getAccCurrent();
+  // await this.getAccCurrent();
+
+  // }
+
+  ngOnInit() {
+    console.log('ngOnInit');
     // this.activatedRoute.queryParams.subscribe(params => {
-    //   // Dữ liệu account sẽ được trả về khi đăng nhập thành công.
+    //   Dữ liệu account sẽ được trả về khi đăng nhập thành công.
     //   this.accCurrent = params as any; // Các thuộc tính của đối tượng được truyền sẽ có trong đối tượng params
     //   console.log('this.accCurrent: ', this.accCurrent);
     // });
 
 
-    // console.log('ngOnInit')
-    // this.getAccCurrent();
-    await this.getAccCurrent();
+    console.log('ngOnInit')
+    this.getAccCurrent();
+    // await this.getAccCurrent();
 
   }
 
 
 
   getAccCurrent() {
-    // console.log('getAccCurrent');
+    console.log('getAccCurrent');
     // Dữ liệu account sẽ được  trả về khi đăng nhập thành công.
     // await this.activatedRoute.queryParams.subscribe(params => {
     //   // Dữ liệu account sẽ được trả về khi đăng nhập thành công.
     //   this.accCurrent = params as any; // Các thuộc tính của đối tượng được truyền sẽ có trong đối tượng params
     //   console.log('this.accCurrent: ', this.accCurrent);
     // });
+
     this.accCurrent = this.dataService.getData();
-    // console.log('this.accCurrent: ', this.accCurrent);
-    if (this.isEmpty(this.accCurrent)){
-      // console.log('this.isEmpty true')
+    console.log('this.accCurrent: ', this.accCurrent);
+    if (this.isEmpty(this.accCurrent)) {
+      console.log('this.isEmpty accCurren true');
       this.router.navigate(['/login']);
     }
   }

@@ -45,7 +45,7 @@ export class LoginPage {
       password: '9178',
       avatar: 'https://i.pravatar.cc/300?u=b',
       name: 'Trần Anh Tú',
-      code: '',
+      code: 'HT 1998',
       phone: '0388493355',
       address: '30/8/14, Phan Đình Giót, La Khê, Hà Đông, Hà Nội',
       socialNetwork: {
