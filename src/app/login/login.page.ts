@@ -152,6 +152,7 @@ export class LoginPage {
           // this.router.navigate(['/partner-management'], { queryParams: accIncludes })
           this.dataService.setData(accIncludes);
           this.router.navigate(['/partner-management']);
+          // this.router.navigate(['/partner-management'], { queryParams: accIncludes });
 
         }
       }

@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { DataService } from 'src/app/services/data-service.service';
+import { IsEmptyPipe } from 'src/app/pipes/is-empty.pipe';
 @Component({
   selector: 'app-partner-management',
   templateUrl: './partner-management.page.html',
@@ -42,13 +43,28 @@ export class PartnerManagementPage implements OnInit {
     // });
 
 
+    // console.log('ngOnInit')
+    // this.getAccCurrent();
     await this.getAccCurrent();
+
   }
 
+
+
   getAccCurrent() {
+    // console.log('getAccCurrent');
     // Dữ liệu account sẽ được  trả về khi đăng nhập thành công.
+    // await this.activatedRoute.queryParams.subscribe(params => {
+    //   // Dữ liệu account sẽ được trả về khi đăng nhập thành công.
+    //   this.accCurrent = params as any; // Các thuộc tính của đối tượng được truyền sẽ có trong đối tượng params
+    //   console.log('this.accCurrent: ', this.accCurrent);
+    // });
     this.accCurrent = this.dataService.getData();
-    console.log('this.accCurrent: ', this.accCurrent);
+    // console.log('this.accCurrent: ', this.accCurrent);
+    if (this.isEmpty(this.accCurrent)){
+      // console.log('this.isEmpty true')
+      this.router.navigate(['/login']);
+    }
   }
 
   onClickTab() {
@@ -145,6 +161,10 @@ export class PartnerManagementPage implements OnInit {
     if (ev.detail.role === 'close') {
       // this.message = `Hello, ${ev.detail.data}!`;
     }
+  }
+
+  isEmpty(value: any) {
+    return new IsEmptyPipe().transform(value);
   }
 
 }

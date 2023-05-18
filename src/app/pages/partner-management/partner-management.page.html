@@ -111,7 +111,7 @@
         </ion-buttons>
 
         <!-- Tiêu đề Modal -->
-        <ion-title>{{accCurrent.username}}</ion-title>
+        <ion-title>{{accCurrent?.username? accCurrent.username  : ''}}</ion-title>
       </ion-toolbar>
 
     </ion-header>
@@ -120,7 +120,7 @@
 
       <div style="display: flex; justify-content: center;">
         <ion-avatar style="height: fit-content; width: fit-content;">
-          <ion-img [src]="accCurrent.avatar? accCurrent.avatar : AVATAR_DEFAULT" style="width: 6rem; height: 6rem;"></ion-img>
+          <ion-img [src]="accCurrent?.avatar? accCurrent.avatar : AVATAR_DEFAULT" style="width: 6rem; height: 6rem;"></ion-img>
         </ion-avatar>
       </div>
 
