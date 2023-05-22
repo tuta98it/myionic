@@ -154,28 +154,28 @@
             <p style="white-space: break-spaces;">{{accCurrent.address}}</p>
           </ion-label>
         </ion-item>
-        <ion-item button *ngIf="accCurrent.facebook">
+        <ion-item button *ngIf="accCurrent.socialNetwork.facebook">
           <ion-icon name="logo-facebook" slot="start"></ion-icon>
           <ion-label>
             <h3>Facebook</h3>
             <p>{{accCurrent.socialNetwork.facebook}}</p>
           </ion-label>
         </ion-item>
-        <ion-item button *ngIf="accCurrent.zalo">
+        <ion-item button *ngIf="accCurrent.socialNetwork.zalo">
           <ion-icon name="megaphone-outline" slot="start"></ion-icon>
           <ion-label>
             <h3>Zalo</h3>
             <p>{{accCurrent.socialNetwork.zalo}}</p>
           </ion-label>
         </ion-item>
-        <ion-item button *ngIf="accCurrent.telegram">
+        <ion-item button *ngIf="accCurrent.socialNetwork.telegram">
           <ion-icon name="camera-outline" slot="start"></ion-icon>
           <ion-label>
             <h3>Telegram</h3>
             <p>{{accCurrent.socialNetwork.telegram}}</p>
           </ion-label>
         </ion-item>
-        <ion-item button *ngIf="accCurrent.tiwtter">
+        <ion-item button *ngIf="accCurrent.socialNetwork.tiwtter">
           <ion-icon name="logo-twitter" slot="start"></ion-icon>
           <ion-label>
             <h3>Twitter</h3>
