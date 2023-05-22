@@ -4,6 +4,8 @@ import { IsEmptyPipe } from '../pipes/is-empty.pipe';
 import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';
 import { ModalController, NavController } from '@ionic/angular';
 import { DataService } from '../services/data-service.service';
+import { AccountService } from '../services/account.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: 'login.page.html',
@@ -61,7 +63,8 @@ export class LoginPage {
     private router: Router,
     private modalController: ModalController,
     private navCtrl: NavController,
-    private dataService: DataService) {
+    private dataService: DataService,
+    private accountService : AccountService) {
   }
 
   isEmpty(value: any) {
@@ -150,7 +153,7 @@ export class LoginPage {
           // Dữ liệu account sẽ được truyền đi khi đăng nhập đúng tài khoản và mật khẩu.
           // this.navCtrl.navigateForward('/partner-management', { queryParams: accIncludes });
           // this.router.navigate(['/partner-management'], { queryParams: accIncludes })
-          this.dataService.setData(accIncludes);
+          this.accountService.setAccount(accIncludes);
           this.router.navigate(['/partner-management']);
           // this.router.navigate(['/partner-management'], { queryParams: accIncludes });
 

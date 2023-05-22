@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { DataService } from 'src/app/services/data-service.service';
 import { IsEmptyPipe } from 'src/app/pipes/is-empty.pipe';
+import { AccountService } from 'src/app/services/account.service';
+
 @Component({
   selector: 'app-partner-management',
   templateUrl: './partner-management.page.html',
@@ -25,7 +27,8 @@ export class PartnerManagementPage implements OnInit, AfterViewInit {
     private activatedRoute: ActivatedRoute,
     private modalController: ModalController,
     private alertController: AlertController,
-    private dataService: DataService) {
+    private dataService: DataService,
+    private accountService : AccountService) {
 
   }
 
@@ -74,13 +77,7 @@ export class PartnerManagementPage implements OnInit, AfterViewInit {
   getAccCurrent() {
     console.log('getAccCurrent');
     // Dữ liệu account sẽ được  trả về khi đăng nhập thành công.
-    // await this.activatedRoute.queryParams.subscribe(params => {
-    //   // Dữ liệu account sẽ được trả về khi đăng nhập thành công.
-    //   this.accCurrent = params as any; // Các thuộc tính của đối tượng được truyền sẽ có trong đối tượng params
-    //   console.log('this.accCurrent: ', this.accCurrent);
-    // });
-
-    this.accCurrent = this.dataService.getData();
+    this.accCurrent = this.accountService.getAccount();
     console.log('this.accCurrent: ', this.accCurrent);
     if (this.isEmpty(this.accCurrent)) {
       console.log('this.isEmpty accCurren true');
