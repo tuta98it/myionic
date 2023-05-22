@@ -49,7 +49,7 @@ export class LoginPage {
       phone: '0388493355',
       address: '30/8/14, Phan Đình Giót, La Khê, Hà Đông, Hà Nội',
       socialNetwork: {
-        facebook: '',
+        facebook: 'https://www.facebook.com/anhtu.tran.7169/',
         zalo: '',
         telegram: '',
         twitter: '',

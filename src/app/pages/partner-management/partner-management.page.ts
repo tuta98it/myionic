@@ -39,7 +39,7 @@ export class PartnerManagementPage implements OnInit, AfterViewInit {
 
 
 
-  // async ngOnInit() {
+  //  ngOnInit() {
   // console.log('ngOnInit');
   // this.activatedRoute.queryParams.subscribe(params => {
   //   // Dữ liệu account sẽ được trả về khi đăng nhập thành công.
@@ -54,7 +54,7 @@ export class PartnerManagementPage implements OnInit, AfterViewInit {
 
   // }
 
-  ngOnInit() {
+  async ngOnInit() {
     console.log('ngOnInit');
     // this.activatedRoute.queryParams.subscribe(params => {
     //   Dữ liệu account sẽ được trả về khi đăng nhập thành công.
@@ -64,7 +64,7 @@ export class PartnerManagementPage implements OnInit, AfterViewInit {
 
 
     console.log('ngOnInit')
-    this.getAccCurrent();
+    await this.getAccCurrent();
     // await this.getAccCurrent();
 
   }

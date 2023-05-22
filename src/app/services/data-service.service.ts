@@ -9,7 +9,6 @@ export class DataService {
 
   setData(data: any) {
     console.log('set-data')
-
     this.data = data;
   }
 
