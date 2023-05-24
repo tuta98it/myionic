@@ -18,10 +18,14 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class PartnerManagementPage implements OnInit, AfterViewInit {
   @ViewChild(IonModal) modal!: IonModal;
-  AVATAR_DEFAULT: string = 'https://ionicframework.com/docs/img/demos/avatar.svg';
+  linkAvatarDefault: string = 'https://ionicframework.com/docs/img/demos/avatar.svg';
 
   accCurrent: any = {};
-  titleApp = 'Xét nghiệm'
+  titleApp = 'Xét nghiệm';
+  titleContact = 'Liên hệ';
+  isModalOpenUser = false;
+  isModalOpenSales = false;
+  isModalOpenContact = false;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -83,6 +87,19 @@ export class PartnerManagementPage implements OnInit, AfterViewInit {
       console.log('this.isEmpty accCurren true');
       this.router.navigate(['/login']);
     }
+  }
+
+  setOpenModalUser(isOpen: boolean) {
+    this.isModalOpenUser = isOpen;
+
+  }
+
+  setOpenModalSales(isOpen: boolean) {
+    this.isModalOpenSales = isOpen;
+  }
+
+  setOpenModalContact(isOpen: boolean) {
+    this.isModalOpenContact = isOpen;
   }
 
   onClickTab() {
@@ -179,6 +196,128 @@ export class PartnerManagementPage implements OnInit, AfterViewInit {
     if (ev.detail.role === 'close') {
       // this.message = `Hello, ${ev.detail.data}!`;
     }
+  }
+
+  async presentAlertContactSalesStaff() {
+    this.titleContact = 'Liên hệ NVKD';
+    const alert = await this.alertController.create({
+      header: 'Thông báo',
+      subHeader: 'Nhân viên CSKH của bạn là Trần Thị Mỹ Linh. SĐT: 0987548294.',
+      message: 'Bạn có muốn gặp Trần Thị Mỹ Linh không?',
+      buttons: [
+        {
+          text: 'Không',
+          role: 'cancel',
+          handler: () => {
+            this.titleContact = 'Liên hệ';
+            // this.handlerMessage = 'Alert canceled';
+          },
+        },
+        {
+          text: 'Có',
+          role: 'confirm',
+          handler: () => {
+            this.presentAlertNotification(
+              'Thông báo',
+              '',
+              'Cảm ơn bạn đã gửi yêu cầu, Trần Thị Mỹ Linh sẽ liên hệ lại với bạn trong thời gian ngắn nhất.');
+            // this.logoutAccount();
+            // this.handlerMessage = 'Alert confirmed';
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+  }
+
+  async presentAlertContactSwitchboard() {
+    this.titleContact = 'Liên hệ Tổng đài';
+    const alert = await this.alertController.create({
+      header: 'Thông báo',
+      subHeader: 'Tổng đài sẽ phụ trách các công việc lên đơn, phản ánh tình trạng kết quả muộn, ...',
+      message: 'Bạn có muốn gặp tổng đài không?',
+      buttons: [
+        {
+          text: 'Không',
+          role: 'cancel',
+          handler: () => {
+            this.titleContact = 'Liên hệ';
+          },
+        },
+        {
+          text: 'Có',
+          role: 'confirm',
+          handler: () => {
+            this.presentAlertNotification(
+              'Thông báo',
+              '',
+              'Cảm ơn bạn đã gửi yêu cầu, Trần Thị Mỹ Linh sẽ liên hệ lại với bạn trong thời gian gần nhất.',);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+  }
+
+  async presentAlertContactPaymentDepartment() {
+    this.titleContact = 'Liên hệ Bộ phận thanh toán';
+    const alert = await this.alertController.create({
+      header: 'Thông báo',
+      subHeader: 'Không có gì đâu',
+      message: 'Đừng liên hệ',
+      buttons: [
+        {
+          text: 'Không',
+          role: 'cancel',
+          handler: () => {
+            this.titleContact = 'Liên hệ';
+          },
+        },
+        {
+          text: 'Có',
+          role: 'confirm',
+          handler: () => {
+            this.presentAlertNotification(
+              'Thông báo',
+              'Liên hệ bộ phận thanh toán',
+              'Thôi đừng liên hệ nữa');
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+  }
+
+  async presentAlertNotification(header:any, subHeader:any, message:any) {
+    // this.titleContact = 'Liên hệ NVKD';
+    const alert = await this.alertController.create({
+      header,
+      subHeader,
+      message,
+      buttons: [
+        {
+          text: 'Đóng',
+          role: 'cancel',
+          handler: () => {
+            this.titleContact = 'Liên hệ';
+            // this.handlerMessage = 'Alert canceled';
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
   }
 
   isEmpty(value: any) {
