@@ -20,88 +20,89 @@
             <ion-icon slot="icon-only" name="funnel-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
-
-
-        <!-- Lựa chọn khoảng thời gian lọc -->
-        <div style="display: flex; align-items: center; ">
-          <ion-list>
-            <ion-item>
-              <ion-icon slot="start" name="calendar-clear-outline" color="primary"></ion-icon>
-              <ion-select aria-label="Fruit" interface="popover" placeholder="Chọn khoảng thời gian lọc">
-                <ion-select-option value="all">
-                  --Tất Cả--
-                </ion-select-option>
-                <ion-select-option value="today">
-                  Hôm nay
-                </ion-select-option>
-                <ion-select-option value="yesterday">
-                  Hôm qua
-                </ion-select-option>
-                <ion-select-option value="this_week">
-                  Tuần này
-                </ion-select-option>
-                <ion-select-option value="7_day_ago">
-                  7 ngày trước
-                </ion-select-option>
-                <ion-select-option value="this_month">
-                  Tháng này
-                </ion-select-option>
-                <ion-select-option value="30_days_ago">
-                  30 ngày trước
-                </ion-select-option>
-                <ion-select-option value="from_day_to_date">
-                  Từ ngày đến ngày
-                </ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
-        </div>
       </div>
 
-      <!-- Nội dung -->
-      <div class="content-laboratory">
+      <!-- Lựa chọn khoảng thời gian lọc -->
+      <div style="display: flex; align-items: center; ">
         <ion-list>
-
-          <!-- Danh các đối tác -->
-          <ion-item *ngFor="let item of listPatientLab; let i = index">
-            <!-- Thông tin bệnh nhân -->
-            <ion-label>
-              <!-- Tên bệnh nhân -->
-              <h2 class="name-patient">{{item.name}}</h2>
-              <!-- Số điện thoại -->
-              <div *ngIf="!(item.phone | isEmpty)" class="info">
-                <div>
-                  <ion-icon name="call-outline"></ion-icon>
-                </div>
-                <h3 class="text">{{item.phone}}</h3>
-              </div>
-
-              <!-- Địa chỉ -->
-              <div *ngIf="!(item.address | isEmpty)" class="info">
-                <div>
-                  <ion-icon name="location-outline"></ion-icon>
-                </div>
-                <h3 class="text">{{item.address}}</h3>
-              </div>
-
-              <!-- Chỉ định -->
-              <div *ngIf="!(item.conditon | isEmpty)" class="info">
-                <div>
-                  <ion-icon name="pulse-outline"></ion-icon>
-                </div>
-                <h3 class="text">{{item.conditon}}</h3>
-              </div>
-
-              <!-- Tình trạng mẫu xét nghiệm -->
-              <div *ngIf="!(item.status | isEmpty)" class="status">
-                <h3>{{item.status}}</h3>
-              </div>
-            </ion-label>
+          <ion-item>
+            <ion-icon slot="start" name="calendar-clear-outline" color="primary"></ion-icon>
+            <ion-select aria-label="Fruit" interface="popover" placeholder="Chọn khoảng thời gian lọc">
+              <ion-select-option value="all">
+                --Tất Cả--
+              </ion-select-option>
+              <ion-select-option value="today">
+                Hôm nay
+              </ion-select-option>
+              <ion-select-option value="yesterday">
+                Hôm qua
+              </ion-select-option>
+              <ion-select-option value="this_week">
+                Tuần này
+              </ion-select-option>
+              <ion-select-option value="7_day_ago">
+                7 ngày trước
+              </ion-select-option>
+              <ion-select-option value="this_month">
+                Tháng này
+              </ion-select-option>
+              <ion-select-option value="30_days_ago">
+                30 ngày trước
+              </ion-select-option>
+              <ion-select-option value="from_day_to_date">
+                Từ ngày đến ngày
+              </ion-select-option>
+            </ion-select>
           </ion-item>
         </ion-list>
       </div>
+
+    </div>
+
+    <!-- DS Phiếu xét nghiệm -->
+    <div class="content-laboratory">
+      <ion-list>
+
+        <!-- Danh các đối tác -->
+        <ion-item *ngFor="let item of listPatientLab; let i = index">
+          <!-- Thông tin bệnh nhân -->
+          <ion-label>
+            <!-- Tên bệnh nhân -->
+            <h2 class="name-patient">{{item.name}}</h2>
+            <!-- Số điện thoại -->
+            <div *ngIf="!(item.phone | isEmpty)" class="info">
+              <div>
+                <ion-icon name="call-outline"></ion-icon>
+              </div>
+              <h3 class="text">{{item.phone}}</h3>
+            </div>
+
+            <!-- Địa chỉ -->
+            <div *ngIf="!(item.address | isEmpty)" class="info">
+              <div>
+                <ion-icon name="location-outline"></ion-icon>
+              </div>
+              <h3 class="text">{{item.address}}</h3>
+            </div>
+
+            <!-- Chỉ định -->
+            <div *ngIf="!(item.conditon | isEmpty)" class="info">
+              <div>
+                <ion-icon name="pulse-outline"></ion-icon>
+              </div>
+              <h3 class="text">{{item.conditon}}</h3>
+            </div>
+
+            <!-- Tình trạng mẫu xét nghiệm -->
+            <div *ngIf="!(item.status | isEmpty)" class="status">
+              <h3>{{item.status}}</h3>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </div>
   </div>
+
 
   <!-- Nút thêm mới -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
