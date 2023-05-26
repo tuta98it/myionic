@@ -1,6 +1,6 @@
 .content-service {
   overflow: auto;
-  max-height: 27rem;
+  max-height: calc(100vh - 12rem);
 
   ion-list {
     ion-item {
@@ -8,7 +8,7 @@
       flex-direction: column;
 
       ion-label {
-        h2.name-partner {
+        h2.name-patient {
           font-weight: 600;
         }
 

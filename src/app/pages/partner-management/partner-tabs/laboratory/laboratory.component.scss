@@ -1,4 +1,7 @@
 .content-laboratory {
+  overflow: auto;
+  max-height: calc(100vh - 15.5rem);
+
   ion-list {
     ion-item {
       display: flex;
